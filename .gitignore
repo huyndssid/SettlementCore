@@ -1,0 +1,39 @@
+## Ignore Visual Studio temporary files
+.vs/
+*.user
+*.suo
+
+## Build results
+bin/
+obj/
+[Ll]og/
+TestResults/
+*.log
+
+## NuGet
+*.nupkg
+packages/
+*.snupkg
+
+## Configuration files
+*.dbmdl
+*.dbschema
+*.mdf
+*.ldf
+
+## Rider / JetBrains
+.idea/
+
+## Mac + Windows junk
+.DS_Store
+Thumbs.db
+
+## Dotnet CLI artifacts
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Others
+*.vsidx
+*.pidb
+*.userprefs
