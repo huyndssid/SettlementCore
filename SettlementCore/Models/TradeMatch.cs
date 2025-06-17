@@ -1,5 +1,3 @@
-using System;
-
 namespace StateMachineCore.Models
 {
     public class TradeMatch

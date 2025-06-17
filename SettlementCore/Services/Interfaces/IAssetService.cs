@@ -1,5 +1,3 @@
-using System.Threading.Tasks;
-
 namespace StateMachineCore.Services.Interfaces
 {
     public interface IAssetService

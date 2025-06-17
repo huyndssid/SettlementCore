@@ -1,6 +1,3 @@
-using System;
-using StateMachineCore.Models;
-
 namespace StateMachineCore.Models.Messages
 {
     public class SettlementFailedMessage

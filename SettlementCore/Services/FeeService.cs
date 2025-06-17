@@ -1,5 +1,4 @@
-﻿using StateMachineCore.Models;
-using StateMachineCore.Services.Interfaces;
+﻿using StateMachineCore.Services.Interfaces;
 
 internal class FeeService : IFeeService
 {

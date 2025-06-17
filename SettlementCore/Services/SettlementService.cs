@@ -1,10 +1,7 @@
-using System;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using StateMachineCore.Models;
 using StateMachineCore.Models.Messages;
 using StateMachineCore.Services.Interfaces;
-using StateMachineCore.Core;
 
 namespace StateMachineCore.Services
 {
@@ -16,7 +13,6 @@ namespace StateMachineCore.Services
         private readonly IFeeService _feeService;
         private readonly ILedgerService _ledgerService;
         private readonly ISettlementProducer _settlementProducer;
-        //private readonly Func<SettlementTransaction, TradeSettlementStateMachine> _stateMachineFactory;
 
         public SettlementService(
             ILogger<SettlementService> logger,
@@ -25,7 +21,6 @@ namespace StateMachineCore.Services
             IFeeService feeService,
             ILedgerService ledgerService,
             ISettlementProducer settlementProducer)
-            //Func<SettlementTransaction, TradeSettlementStateMachine> stateMachineFactory)
         {
             _logger = logger;
             _assetService = assetService;
@@ -33,12 +28,10 @@ namespace StateMachineCore.Services
             _feeService = feeService;
             _ledgerService = ledgerService;
             _settlementProducer = settlementProducer;
-            //_stateMachineFactory = stateMachineFactory;
         }
 
         public async Task<bool> ProcessSettlementAsync(SettlementTransaction transaction)
         {
-            //var stateMachine = _stateMachineFactory(transaction);
             try 
             {
                 _logger.LogInformation($"Starting settlement process for trade {transaction.TradeId}");
@@ -52,7 +45,6 @@ namespace StateMachineCore.Services
                     return false;
                 }
                 transaction.State = SettlementState.Locked;
-                //await stateMachine.FireAsync(SettlementTrigger.LockAssets);
                 
                 // Process transfer
                 if (!await ProcessTransferAsync(transaction))
@@ -62,7 +54,6 @@ namespace StateMachineCore.Services
                     return false;
                 }
                 transaction.State = SettlementState.Processing;
-                //await stateMachine.FireAsync(SettlementTrigger.ProcessTransfer);
                 
                 // Process fees
                 if (!await ProcessFeesAsync(transaction))
@@ -72,7 +63,6 @@ namespace StateMachineCore.Services
                     return false;
                 }
                 transaction.State = SettlementState.FeeDiscount;
-                //await stateMachine.FireAsync(SettlementTrigger.ProcessFees);
                 
                 // Complete settlement
                 if (!await CompleteSettlementAsync(transaction))
@@ -82,7 +72,6 @@ namespace StateMachineCore.Services
                     return false;
                 }
                 transaction.State = SettlementState.Completed;
-                //await stateMachine.FireAsync(SettlementTrigger.Complete);
                 
                 // Send completion notifications
                 await SendCompletionNotificationsAsync(transaction);
@@ -310,7 +299,6 @@ namespace StateMachineCore.Services
 
         public async Task<bool> RollbackSettlementAsync(SettlementTransaction transaction)
         {
-            //var stateMachine = _stateMachineFactory(transaction);
             try
             {
                 _logger.LogInformation($"Starting rollback for trade {transaction.TradeId}");
@@ -360,7 +348,6 @@ namespace StateMachineCore.Services
                 }
 
                 transaction.State = SettlementState.Failed;
-                //await stateMachine.FireAsync(SettlementTrigger.Fail);
 
                 // Send failure notification
                 await SendFailureNotificationAsync(transaction);

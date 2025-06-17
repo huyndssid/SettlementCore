@@ -4,7 +4,6 @@ using Microsoft.Extensions.Logging;
 using StateMachineCore.Consumers;
 using StateMachineCore.Services;
 using StateMachineCore.Services.Interfaces;
-using StateMachineCore.Core;
 using StateMachineCore.Models;
 using StateMachineCore.Services.Kafka;
 
@@ -29,17 +28,9 @@ var host = Host.CreateDefaultBuilder(args)
         services.AddScoped<ILedgerService, LedgerService>();
         services.AddScoped<ISettlementService, SettlementService>();
         services.AddScoped<ISettlementProducer, SettlementProducer>();
+        // Register Kafka consumer as hosted service
         services.AddHostedService<SettlementConsumer>();
 
-        // Register state machine factory
-        //services.AddTransient<Func<SettlementTransaction, TradeSettlementStateMachine>>(serviceProvider =>
-        //{
-        //    return (transaction) => new TradeSettlementStateMachine(
-        //        transaction,
-        //        serviceProvider.GetRequiredService<ILogger<TradeSettlementStateMachine>>());
-        //});
-
-        // Register Kafka consumer as hosted service
     })
     .Build();
 

@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using StateMachineCore.Models.Messages;
 
 namespace StateMachineCore.Services.Interfaces
