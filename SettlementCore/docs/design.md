@@ -33,7 +33,7 @@ Core Settlement Service là một microservice chịu trách nhiệm xử lý c�
 - Validate và deserialize dữ liệu
 - Tạo settlement transaction
 - Điều phối quy trình xử lý
-
+ 
 #### 2.2.2. State Machine Core
 - Quản lý trạng thái và chuyển đổi
 - Xử lý business logic

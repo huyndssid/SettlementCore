@@ -373,3 +373,7 @@ Real-time logs: Console output
 Statistics: Python monitoring script
 Topic inspection: Kafka console consumer
 Bây giờ bạn có thể chạy load test để kiểm tra performance và reliability của hệ thống
+
+
+## Test hiệu suất với dữ liệu lớn hơn:
+chmod +x SettlementCore/scripts/run-performance-test.sh
