@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Logging;
+using StateMachineCore.Core.StateMachine.Examples;
 using StateMachineCore.Models;
 using StateMachineCore.Models.Messages;
 using StateMachineCore.Services.Interfaces;
@@ -14,13 +15,16 @@ namespace StateMachineCore.Services
         private readonly ILedgerService _ledgerService;
         private readonly ISettlementProducer _settlementProducer;
 
+        private StateMachineExample _stateTest;
+
         public SettlementService(
             ILogger<SettlementService> logger,
             IAssetService assetService,
             IWalletService walletService,
             IFeeService feeService,
             ILedgerService ledgerService,
-            ISettlementProducer settlementProducer)
+            ISettlementProducer settlementProducer
+            )
         {
             _logger = logger;
             _assetService = assetService;

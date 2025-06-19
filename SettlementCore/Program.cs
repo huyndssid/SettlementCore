@@ -2,10 +2,14 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using StateMachineCore.Consumers;
+using StateMachineCore.Core.StateMachine.Examples;
+using StateMachineCore.Models;
 using StateMachineCore.Services;
 using StateMachineCore.Services.Interfaces;
-using StateMachineCore.Models;
 using StateMachineCore.Services.Kafka;
+
+var example = new StateMachineExample();
+await example.DemonstrateStepExecution();
 
 var host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((hostContext, services) =>

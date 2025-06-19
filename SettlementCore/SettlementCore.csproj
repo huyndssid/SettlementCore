@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Core\" />
+    <Folder Include="Services\States\" />
   </ItemGroup>
 
 </Project>
